@@ -6,6 +6,8 @@ A stupid, simple router for PHP
 ```php
 include 'Router.php';
 Router::init();
+
+//Router::init('/basedir');
 ```
 
 <br />
