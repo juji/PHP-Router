@@ -5,7 +5,7 @@ A stupid, simple router for PHP
 
 ```php
 include 'Router.php';
-$route = new Router();
+Router::init();
 ```
 
 <br />
@@ -14,26 +14,26 @@ $route = new Router();
 //add stuff
 
 // GET /
-$route->add('/','home');
+Router::add('/','home');
 function home($var){ /* Do something */ }
 
 // GET /user
-$route->add('/user','profle');
+Router::add('/user','profle');
 function home($var){ /* Do something */ }
 
 //404
-$route->finally('notfound');
+Router::finally('notfound');
 function notfound($vara){ print "Can't find it"; }
 
 //start the thing
-$route->start();
+Router::start();
 ```
 
 
 <br />
 ###Multiple Method
 ```php
-$route->add('POST GET','/user','user');
+Router::add('POST GET','/user','user');
 function user($var){  }
 
 /*
@@ -47,7 +47,7 @@ function user($var){  }
 <br />
 ###Use `_method` Parameter for unsupported browser
 ```php
-$route->add('PUT DELETE POST','/user','doUser');
+Router::add('PUT DELETE POST','/user','doUser');
 function doUser($var){  }
 
 /*
@@ -71,7 +71,7 @@ function doUser($var){  }
 * GET /user/fatima
 */
 
-$route->add('/user/:id','profile');
+Router::add('/user/:id','profile');
 function profile($var){ 
     /*
 	*
@@ -96,7 +96,7 @@ function profile($var){
 * GET /user/fatima/otherstuff/somepage
 */
 
-$route->add('/user/:id*','profileSection');
+Router::add('/user/:id*','profileSection');
 function profileSection($var){ 
     /*
 	*
@@ -123,7 +123,7 @@ function profileSection($var){
 * 
 */
 
-$route->add('/user/:id*/edit','editSomething');
+Router::add('/user/:id*/edit','editSomething');
 function editSomething($var) {
 /*
     *
@@ -143,13 +143,13 @@ function editSomething($var) {
 ###Last Matched Route
 ```php
 // GET /user/fatima/somepage
-$route->add('/user/:id*','profile');                //this one will be executed
-$route->add('/user/:id*/edit','profileSection');
+Router::add('/user/:id*','profile');                //this one will be executed
+Router::add('/user/:id*/edit','profileSection');
 
 
 // GET /user/fatima/somepage/something/edit
-$route->add('/user/:id*','profile');         
-$route->add('/user/:id*/edit','profileSection');    //this one will be executed
+Router::add('/user/:id*','profile');         
+Router::add('/user/:id*/edit','profileSection');    //this one will be executed
 ```
 
 

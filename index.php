@@ -1,17 +1,18 @@
 <?php
 	
 include 'Router.php';
-$route = new Router();
-$route->add('/','home');
-function home($var){  }
+Router::init();
+
+Router::add('/','home');
+function home($var){ pp($var); }
 /*
 * Matches:
 * GET /
 */
 
 	
-$route->add('POST GET','/user','user');
-function user($var){  }
+Router::add('POST GET','/user','user');
+function user($var){ pp($var); }
 /*
 * Matches:
 * GET /user
@@ -19,8 +20,8 @@ function user($var){  }
 */
 
 
-$route->add('PUT DELETE POST','/user','doUser');
-function doUser($var){  }
+Router::add('PUT DELETE POST','/user','doUser');
+function doUser($var){ pp($var); }
 /*
 * Matches:
 * PUT /user
@@ -36,7 +37,7 @@ function doUser($var){  }
 * Matches:
 * GET /user/fatima
 */
-$route->add('/user/:id','profile');
+Router::add('/user/:id','profile');
 function profile($var){ 
 	/*
 	*
@@ -48,6 +49,7 @@ function profile($var){
 	* )
 	*
 	*/
+	pp($var);
 }	
 
 
@@ -56,7 +58,7 @@ function profile($var){
 * GET /user/fatima/posts
 * GET /user/fatima/otherstuff/somepage
 */
-$route->add('/user/:id*','profileSection');
+Router::add('/user/:id*','profileSection');
 function profileSection($var){ 
 	/*
 	*
@@ -79,7 +81,7 @@ function profileSection($var){
 * 
 * NOTE: The last matched Route will be executed.
 */
-$route->add('/user/:id*/edit','editSomething');
+Router::add('/user/:id*/edit','editSomething');
 function editSomething($var) {
 /*
 	*
@@ -91,15 +93,16 @@ function editSomething($var) {
 	* )
 	*
 	*/		
+	pp($var);
 }
 
 
 /* 404 Not found function */
-$route->finally('notFound');
-function notFound($var){ print "Can't find it" }
+Router::finally('notFound');
+function notFound($var){ print "Can't find it"; }
 
 //start the thing
-$route->start();
+Router::start();
 
 function pp($v){
 	print '<pre>';
