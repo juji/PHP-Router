@@ -21,7 +21,7 @@ function home($var){ /* Do something */ }
 
 // GET /user
 Router::add('/user','profle');
-function user($var){ /* Do something */ }
+function profle($var){ /* Do something */ }
 
 //404
 Router::finally('notfound');
