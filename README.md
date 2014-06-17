@@ -20,8 +20,9 @@ Router::add('/','home');
 function home($var){ /* Do something */ }
 
 // GET /user
-Router::add('/user','profle');
-function profle($var){ /* Do something */ }
+Router::add('/user',function($var){ 
+	/* Do something */ 
+});
 
 //404
 Router::finally('notfound');
