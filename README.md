@@ -3,6 +3,11 @@ PHP Simple Router
 
 A stupid, simple router for PHP
 
+changelog
+```
+* 'finally' statement giving errors [fixed]
+```
+
 ```php
 include 'Router.php';
 Router::init();
