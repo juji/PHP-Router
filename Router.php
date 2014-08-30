@@ -9,7 +9,7 @@
 
 		public static function init($base=''){
 			self::$routes = array();
-			self::$base = preg_replace('/\/+/','/','/'. preg_replace('`/$`','',preg_replace('`^/`','',$base)) . '/');
+			self::$base = preg_replace('/\/+/','/', '/'. preg_replace('`/$`','',preg_replace('`^/`','',$base)) . '/');
 			if(self::$base=='/') self::$base = self::getDir();
 		}
 
@@ -72,7 +72,7 @@
 			if(isset($_GET['_method'])) $method = self::$clean($_GET['_method']);
 			if(isset($_POST['_method'])) $method = self::$clean($_POST['_method']);
 
-			$path = preg_replace('`'.preg_quote(self::$base).'`','',preg_replace('`\?.*$`','',$_SERVER['REQUEST_URI']));
+			$path = preg_replace('`^'.preg_quote(self::$base).'`','',preg_replace('`\?.*$`','',$_SERVER['REQUEST_URI']));
 			$path = preg_replace('`/+$`','',$path);
 
 			$__arr = array();
