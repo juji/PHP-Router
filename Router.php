@@ -19,7 +19,7 @@
 		}
 
 
-		public static function finally($c){
+		public static function notfound($c){
 			if(!is_callable($c))
 			throw new Exception('Router error: Need a callable to respond a route');
 			self::$notfound = $c;

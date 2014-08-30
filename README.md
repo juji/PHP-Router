@@ -25,7 +25,7 @@ Router::add('/user',function($var){
 });
 
 //404
-Router::finally('notfound');
+Router::notfound('notfound');
 function notfound($vara){ print "Can't find it"; }
 
 //start the thing
