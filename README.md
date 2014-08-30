@@ -3,7 +3,7 @@ PHP Simple Router
 
 A stupid, simple router for PHP
 
-changelog:
+*changelog:*
 ```
 * 'finally' statement giving errors [fixed]
 ```
