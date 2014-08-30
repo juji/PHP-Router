@@ -3,11 +3,12 @@ PHP Simple Router
 
 A stupid, simple router for PHP
 
-changelog
+changelog:
 ```
 * 'finally' statement giving errors [fixed]
 ```
-
+<br />
+###Simple Usage
 ```php
 include 'Router.php';
 Router::init();
@@ -15,8 +16,6 @@ Router::init();
 //Router::init('/basedir');
 ```
 
-<br />
-###Simple Usage
 ```php
 //add stuff
 
