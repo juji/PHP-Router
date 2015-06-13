@@ -1,5 +1,5 @@
 <?php
-	
+
 	class Router{
 		
 		public static $routes;
@@ -69,8 +69,8 @@
 			
 			$method = strtolower($_SERVER['REQUEST_METHOD']);
 
-			if(isset($_GET['_method'])) $method = self::$clean($_GET['_method']);
-			if(isset($_POST['_method'])) $method = self::$clean($_POST['_method']);
+			if(!empty($_GET['_method'])) $method = self::$clean($_GET['_method']);
+			if(!empty($_POST['_method'])) $method = self::$clean($_POST['_method']);
 
 			$path = preg_replace('`^'.preg_quote(self::$base).'`','',preg_replace('`\?.*$`','',$_SERVER['REQUEST_URI']));
 			$path = preg_replace('`/+$`','',$path);
@@ -86,6 +86,7 @@
 				if($v[0]!=$method) continue;
 				
 				$r = preg_replace('/\:[^\/\*]+\*/','(.*?)',$v[1]);
+				$r = preg_replace('/\*/','(.*?)',$v[1]);
 				$r = preg_replace('/\:[^\/]+/','([^\/]+)',$r);
 				if(!preg_match_all('`^'.$r.'$`',$path,$pat)) continue;
 
@@ -107,5 +108,4 @@
 		}
 		
 	}
-	
 ?>
